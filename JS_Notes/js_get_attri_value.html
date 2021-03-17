@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js获取属性的值</title>
+</head>
+<body>
+  <input type="text" id="txt" placeholder="请输入用户名" class="baidu" />
+  <script>
+    window.onload=function(){
+      //1.获取input标签
+      var input=document.getElementById("txt");
+
+      //2.获取属性
+      console.log(input.value);
+      console.log(input.getAttribute("class"));
+      //3.需求 : 给input添加一个name属性   name="username"
+      // input.name = "username";
+
+      input.setAttribute("name","username");
+
+      // 需求 : 删除 input 的 placeholder 值
+      input.removeAttribute("placeholder");
+
+
+
+    }
+  </script>
+</body> 
+</html>

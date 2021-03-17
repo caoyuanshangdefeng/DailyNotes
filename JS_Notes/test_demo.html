@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js_demo</title>
+</head>
+
+<body>
+  <h2>js</h2>
+  <input type="button" value="点我呀!" onclick="alert('点我做什么');">
+  <button onclick="alert('恭喜');">点击</button>
+  <button onclick="alert(8>7&&3<4)">与判断</button>
+
+  <script type="text/javascript">
+    console.log('hello js');
+    // alert("内嵌式")
+    // var a;
+    // console.log(typeof a);// undefined
+    // a = 998;
+    // console.log(typeof a);// number
+    // a = "用心学习"
+    // console.log(typeof a);// string
+    // a = true;
+    // console.log(typeof a);// boolean
+    // for (var i = 1; i <= 9; i++) {
+    //         document.write("<br>");
+    //         for (var j = 1; j <= i; j++) {
+    //           document.write(j + "*" + i + "=" + (j*i) + "&nbsp;&nbsp;&nbsp;&nbsp;");
+    //         }
+    //         document.write("<br>");
+    //       }
+
+
+    //匿名函数:没有名称的函数
+    // var func=function(i,u){
+    //   console.log(i+"love"+u);
+    // }
+
+    //调用函数:
+    // func("aaa","bbb");
+
+
+    //遍历数组demo
+    //定义一个数组并且初始化元素;
+    // var arr = ['aaa',111,88.7,true];//类似于没有定义泛型的 ArrayList
+    //定义一个数组并且初始化元素;
+    // var arr = ['aaa',111,88.7,true];//类似于没有定义泛型的 ArrayList
+
+    //遍历数组
+    // for (var i=0;i<arr.length;i++){
+    //获取元素
+    // document.write(i+"="+arr[i]+"<br/>");
+    // }
+
+    //越界赋值
+    // arr[5]="wangwu";
+    // document.write("arr.length = " + arr.length + " <br />");
+    // for (var i = 0; i < arr.length; i++) {
+    // 获取元素
+    // document.write(i + " = " + arr[i] + " <br />");
+    // }
+    document.write("<br>");
+    // var date = new Date();
+    // document.write("当前日期对象 : "+date+"<br>");
+    // document.write("日期字符串 : "+date.toLocaleString()+"<br>");
+    // document.write("当前年月日 : "+date.toLocaleDateString()+"<br>");
+    // document.write("当前时分秒 : "+date.toLocaleTimeString()+"<br>");
+    // document.write("年 : "+date.getFullYear()+"<br>");
+    // document.write("月 : "+(date.getMonth()+1)+"<br>");
+    // document.write("日 : "+date.getDate()+"<br>");
+    // document.write("时 : "+date.getHours()+"<br>");
+    // document.write("分 : "+date.getMinutes()+"<br>");
+    // document.write("秒 : "+date.getSeconds()+"<br>");
+    // document.write("星期 : "+date.getDay()+"<br>");
+
+
+
+    //Math Object
+    // for ( var i = 0 ; i < 20; i++){
+    //       //Math 数学类:random();返回一个0.0~1.0之间的小数,不包含1.0.
+    //       var value=Math.random();
+    //       //value = value *10;0.78--->7.8
+    //       //将该数值转换为一个整型 window.parseInt();
+    //       // value * n, 取值范围为 [0~9], 如果n是一个数组的长度, 根据长度计算出来的下标, 会不会越界呢 ? 不会.
+    //       var index = window.parseInt(value * 10);
+    //       document.write(i + " = " + index + " <br />");
+    // }
+
+    //transform function
+    //parseInt
+    // var num1 = window.parseInt("111");
+    // document.write(typeof num1 + "=" + num1 + "<br/>");
+
+    // var num2 = window.parseInt("7.8");
+    // document.write(typeof num2 + "=" + num2 + "<br/>");
+
+    // var num3 = window.parseInt("222aaa333");
+    // document.write(typeof num3 + "=" + num3 + "<br/>");
+
+    // var num4 = window.parseInt(2222);
+    // document.write(typeof num4 + "=" + num4 + "<br/>");
+
+    // //parseFloat
+    // var num5= window.parseFloat('7.8');
+    // document.write(typeof num5 +"="+num5 +"<br/>");
+
+    // //Math.round();
+    // var num6= Math.round('7.8');
+    // document.write(typeof num6 +"="+num6+"<br/>");
+    
+
+    // var num7= Math.round('7.2');
+    // document.write(typeof num7 +"="+num7+"<br/>");
+    
+    // // isNaN
+    // var r1 = window.isNaN(100);
+    // document.write(typeof r1 + " = " + r1 + "<br />");
+ 
+    // var r2 = window.isNaN("100");
+    // document.write(typeof r2 + " = " + r2 + "<br />");
+ 
+    // var r3 = window.isNaN("abc");
+    // document.write(typeof r3 + " = " + r3 + "<br />");
+
+
+
+    //encodeURI decodeURI
+    var urlStr="https://www.baidu.com?wd=编码解码函数";
+
+    document.write('初始URL : '+urlStr+"<br/>");
+    //encodeURI  编码字符串(资源路径)
+    urlStr=encodeURI(urlStr);
+    document.write('编码URL : '+urlStr+"<br/>");
+
+    //decodeURI  解码字符串(资源路径)
+    urlStr=decodeURI(urlStr);
+    document.write('解码URL : '+urlStr+"<br/>");
+
+  </script>
+</body>
+
+</html>

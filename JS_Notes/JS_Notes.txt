@@ -1,0 +1,788 @@
+
+javascript---基础
+  1、概述:
+    JavaScript（简称“JS”） 是一种具有函数优先的轻量级，解释型或即时编译型的高级编程语言。
+    虽然它是作为开发Web页面的脚本语言而出名的，但是它也被用到了很多非浏览器环境中，JavaScript 基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。
+
+    JavaScript的标准是ECMAScript 。截至 2012 年，所有浏览器都完整的支持ECMAScript 5.1，旧版本的浏览器至少支持ECMAScript 3 标准。2015年6月17日，ECMA国际组织发布了ECMAScript的第六版，
+    该版本正式名称为 ECMAScript 2015，但通常被称为ECMAScript 6 或者ES6。
+
+
+    DOM :文档对象模型（Document Object Model，简称DOM），是W3C组织推荐的处理可扩展置标语言的标准编程接口。它是一种与平台和语言无关的应用程序接口(API),它可以动态地访问程序和脚本,
+        更新其内容、结构和www文档的风格(目前,HTMl和XML文档是通过说明部分定义的)。
+
+    BOM :BOM指浏览器对象模型，它提供了很多对象用于访问浏览器的功能。
+          BOM的核心对象是window，它表示浏览器的一个实例。它既是通过JavaScript访问浏览器窗口的一个接口，又是ECMAScript规定的Global对象，
+              因此网页中所有全局作用域中声明的变量、函数都会变成window对象的属性和方法。
+
+    js 组成部分
+      1.ECMA Script:构成了JS核心的语法基础
+      2.BOM :Browser Object Model;浏览器对象模型,用来操作浏览器对象
+      3.DOM :Document Object Model 文档对象模型,用来操作网页中的元素
+    (1)核心(ECMAScript):这一部分主要是js的基本语法
+    (2)BOM:主要是获取浏览器信息或操作浏览器,例如:浏览器的前进与后退、浏览器弹出提示框、浏览器地址栏输入网址跳转等操作
+    (3)DOM:此处的文档暂且理解为HTML,html加载到浏览器内存中,可以使用js的DOM结束对内存中的html节点进行修改,用户从浏览器看到的是js动态修改后的页面(增删查改)
+      HTML:hyperText markup Language超文本标记语言
+  2、特点
+    1.交互性(它可以做的就是信息的动态交互)
+    2.安全性(不允许直接访问本地硬盘)
+    3.跨平台性(只要解析js的浏览器都可以执行和平台无关)
+  3、语言类型
+    js:弱类型语言,直译式脚本语言,Netscape公司的产品,最初叫Livescript
+  4、作用
+    js被用来改进设计,验证表单,检测浏览器,创建cookie,等等;js是因特网最流行的脚本语言,并且可以在主要的浏览器中运行
+  5、书写位置
+    5-1.内嵌式
+      理论上JS可以书写在页面的任意位置
+      <script>
+        alert("内嵌式")
+      </script>
+    5-2.外链式
+      首先新建一个文件类型为js的文件,然后在该文件中写js语句,通过script标签对引入到html页面中
+      <script src="js文件路径地址">这里不能写js语句</script>
+    5-2.行内式
+      直接书写在标签身上,是一个简单的事件,所以又称之为事件属性.onclick单击事件
+      <input type="button" value="点我呀!" onclick="alert('点我做什么');">
+      <button onclick="alert('恭喜');">点击</button>
+  6、注释:
+    单行注释：		//	注释语句		快捷键ctrl+/
+    多行注释：		/* 注释语句 */    快捷键ctrl+shift+/   
+    注意：多行注释相互不能嵌套使用，只能在多行注释里面使用单行注释！
+  7、数据类型
+    js中的数据类型
+    数值型:number(凡是数字都是数值型,不区分整数和小数)
+    字符串:string(凡是引号包起来的内容全部都是字符串)
+    布尔:boolean(true,false)
+    对象类型:object(特殊取值null)
+    未定义型:undefined
+  8、变量
+    8-1.定义:就是存放数据的,内存可以存储任意数据
+    8-2.声明变量:
+      var 变量名称=存储的数据;(variable 变量)
+    8-3.变量命名规范:
+      1.只能由数字、字母、_(下划线)、$(美元符号)组成
+      2.不能以数字开头
+      3.命名中不能出现-(js会理解成减号进行减法的操作),不能和关键字冲突
+      js是弱类型语言，不重视类型的定义，但js会根据为变量赋值的情况自定判断该变量是何种类型：
+      数值型：var i = 1;	var d = 2.35;
+      字符串：var str = "用心学习";
+      布尔型：var b = true;
+      总结：js中变量的定义。只要加一个var就行。
+  9、检测数据类型
+    typeof(value);或者typeof value;返回这个变量的类型
+    说明:同一个变量,可以进行不同类型的数据赋值.
+      <script type="text/javascript">
+        console.log('hello js');
+        // alert("内嵌式")
+        var a;
+        console.log(typeof a);// undefined
+        a=998;
+        console.log(typeof a);// number
+        a="用心学习"
+        console.log(typeof a);// string
+        a=true;
+        console.log(typeof a);// boolean
+    </script>
+  10、算术运算符
+    +	-	*	/	%	++	--
+    注意:
+    1.由于js中的小数和整数都是number类型,不存在类似整数除以整数还是整数的结论;
+    2.字符串和其他的数据使用+号运算,会连接成一个新的字符串
+    3.字符串使用了+以外的运算符:如果字符串本身是一个数字,那么自动转为number进行运算,否则就会返回一个NaN的结果,表示这不是一个数字.NaN:not a number
+    4.alert[əˈlɜːt]警惕的，警觉的；机警的，机敏的；充分意识到的
+    <script>
+      alert(1234/1000*1000);//1234
+
+      var s="12";
+      s-=10;
+      alert(s);//2
+
+
+      var s ="aa";
+      s -= 10;
+      alert(s); //NaN Not a Number 不是一个数字
+
+      var s="12";
+      s+= 10;
+      alert(s); //1210
+
+    </script>
+  11、关系比较运算符
+    1.>		>=		<		<=  	!=		
+    2.==	等于（只比较内容）	===	恒等于（比较内容的同时还要比较数据类型）
+    3.注意：关系运算符返回的结果只有两个：true / false
+    <script>
+      //请问1:3>5,结果为?
+      alert(3>5);//false
+      //请问2:"22"==22 结果为?
+      alert("22"==22);//true(仅仅判断数值)
+      //请问3:"22"===22 结果为?
+      alert("22"===22);//false(恒等于,数值和类型都要相等)
+
+    </script>
+  12、逻辑运算符
+    1.&& 与 true&&false ====>false
+    2.|| 或 true||false ====>true
+    3.!  非 !true ====>false
+    false(理解):false,0,null,undefined
+    true(理解):true,非0,非null,非undefined
+
+    针对&&顺口溜:找第一个出现的假值,(一假则假)
+    针对||顺口溜:找第一个真值,(一真则真)
+
+    case1--->"与":
+    <script>
+      //逻辑运算符与(一假则假)
+      //提问1:8<7&&3<4,结果为?
+      alert(8<7&&3<4);//false
+      //提问2:-2&&6+6&&null,结果为?
+      alert(-2&&6+6&&null);//null
+      //提问3:1+1&&0&&5,结果为?
+      alert(1+1&&0&&5);//0
+
+
+    </script>
+    case2--->"或":
+    <script>
+      //逻辑运算符或(一真则真)
+      //提问1:0||23结果为?
+      alert(0||23);//23
+      //提问2:0||false||true 结果为?
+      alert(0||false||true);//true
+      //提问3:null||10<8||10+10;结果为?
+      alert(null||10<8||10+10);//20
+      //提问4:null||10<8||false;结果为?
+      alert(null||10<8||false);//false
+    </script>
+  13、三元运算符:
+    1.条件?表达式1:表达式2
+    2.如果条件为true,返回表达式1的结果
+    3.如果条件为false,返回表达式2的结果
+    case--->三元运算符
+    <script>
+      //提问1:3?"aaa":"bbb";结果为?
+      alert(3?"aaa":"bbb");bbb
+
+
+      //提问2:0?"ccc":"ddd";结果为?
+      alert(0?"ccc":"ddd");//ddd
+    </script>
+  excellent [ˈeksələnt] 卓越的；极好的；杰出的
+  good 良好
+  Pass 及格
+  核成绩(Record) 优（Excellent） （90-100）良（Good） （80-90）中（Fair） （70-80）及格（Pass） （60-70）不及格（Fail） （60分以下）绩点(Grade Point)43210
+  14、if条件语句
+    case1:
+    
+    <script>
+      var score=59;
+
+      if (score>=90){
+        alert("Excellent");
+        }
+      else if (score>=80){
+        alert("Good");
+      }
+      else if (score>=70){
+        alert("Fair");
+      }
+      else if (score>=60){
+        alert("Pass");
+      }else{
+        alert("Fail")
+      }
+
+    </script>
+
+  15、switch分支结构
+    //case--->switch
+    <script>
+    
+          var score = 59;
+    
+          // 需求 : 将需要一个整型数值, 不想要小数点.
+          // window 对象的 parseInt 方法.
+          score = window.parseInt(score / 10 + "");
+          // alert(score);
+    
+          switch (score) {
+              case 10:
+              case 9:
+                  alert("Excellent!");
+                  break;
+              case 8:
+                  alert("Good!");
+                  break;
+              case 7:
+              case 6:
+                  alert("Pass!");
+                  break;
+              default:
+                  alert("Fail!");
+                  break;
+          }
+  
+    </script>
+
+  16、循环结果while、do-while、for
+    while(循环条件){循环体;}
+    do(循环体;)while(循环条件);
+    for(循环变量赋初值;循环条件;循环变量递增){循环语句}
+    <script>
+      //需求:统计1~100之间能够被3和7整除的数字个数
+      var count=0;
+      //1.遍历1~100之间的所有整数值
+      for(var i=1;i<=100,i++){
+        //2.判断
+        if(i % 3 ==0 && i % 7 ==0){
+          //alert(i)
+          console.log(i);
+          //3.累加个数
+          count++;
+
+        }
+      }
+    
+    //4.查看结果
+    console.log(count);
+    </script>
+
+  17、循环嵌套
+    case--->循环嵌套
+    <script>
+      for (var i = 1; i <= 9; i++) {
+                document.write("<br>");
+                for (var j = 1; j <= i; j++) {
+                  document.write(j + "*" + i + "=" + (j*i) + "&nbsp;&nbsp;&nbsp;&nbsp;");
+                }
+                document.write("<br>");
+              }
+    </script>
+
+  18、自定义函数
+    在制作网页的时候，往往需要在页面中使用客户端能够运行的JS代码，因此，都需要添加引用。JS引用一般有type="text/javascript"
+    type="text/javascript"是说明这一段脚本语言是javascript。告诉浏览器这一段要按照javascript来解释执行
+
+    函数的命名是独立的语句段，这个语句段可以被当做一个整体来引用和执行：
+    格式：
+    function 函数名(形式参数){函数体}
+    调用函数:函数名(实际参数);
+
+    18-1.函数只有被调用后才会执行
+    18-2.如果函数需要返回值,直接使用return返回,无需卡率返回值得类型
+      <script type="text/javascript">
+        //定义一个函数:function
+          function demo2(){
+            return 666;
+          }
+      
+        //调用函数:
+        alert(demo2());
+      </script>
+    18-3.如果需要传递参数,不需要指定参数的类型,直接引用变量即可
+      <script type="text/javascript">
+        //定义一个函数:function
+        function demo3(a,b){
+          return a+b;
+        }
+
+        console.log(demo3(10,20));//显示30
+
+      </script>
+    18-4.js中出现2个重名的函数名,后者会把前面的覆盖掉
+    对比java,java有重载(同名不同参)、重写(同名同参同返回值类型、方法体不一样)
+    case:
+    <script type="text/javascript">
+      //定义一个函数:function
+        function demo4(a,b){
+          console.log('this is demo4-1');
+        }
+
+        function demo4(){
+          console.log('this is demo4-2');
+        }
+
+
+        demo4(10,10);
+        demo4();
+    </script>
+    以上返回结果为:this is demo4-2
+
+  19、匿名函数
+    匿名函数是没有名字的函数
+      1.function(形式参数){函数体}
+      2.调用方式:将匿名函数赋值给一个变量,通过变量名调用函数;
+      3.定义函数并赋值给变量:var fn=function(形式参数){函数体}
+      4.调用函数:fn(实际参数);
+
+
+
+    case--->匿名函数
+    <script type="text/javascript>
+      //匿名函数:没有名称的函数
+      var func=function(i,u){
+        console.log(i+"love"+u);
+      }
+
+      //调用函数:
+      func("aaa","bbb");
+
+
+    </script>
+
+  20、轮播图
+  21、js事件
+    21-1.事件概述:
+      事件3要素:
+      1.事件源:被监听的html元素(就是这个事件加给谁),就是某个(某些)html标签
+      2.事件类型:某类动作,例如点击事件、移入移除事件、敲击键盘事件等
+      3.执行指令：事件触发后需要执行的代码，一般使用函数进行封装
+      语法格式：事件源.事件类型=执行指令
+    21-2.常用的事件
+      1.事件名:onload; 描述:某个页面或图像被完成加载(重要);
+      2.事件名:onsubmit; 描述:当表单提交时触发该事件---注意事件源是表单form(重要);
+      3.事件名:onclick; 描述:鼠标点击某个对象(重要);
+      4.事件名:ondblclick; 描述:鼠标双击某个对象;
+      5.事件名:onblur; 描述:元素失去焦点,通常针对表单元素(重要);
+      6.事件名:onfocus; 描述:元素获得焦点,通常针对表单元素(重要);
+      7.事件名:onchange;描述:用户改变域的内容,通常针对表单元素(重要);
+      8.事件名:onkeydown;描述:某个键盘的键被按下;
+      9.事件名:onkeypress;描述:某个键盘的键被按下或被按住;
+      10.事件名:onkeyup;描述:某个键盘的键被松开;
+      11.事件名:onmousedown;描述:某个鼠标按键被按下;
+      12.事件名:onmouseup;描述:某个鼠标按键被松开;
+      13.事件名:onmouseover;描述:鼠标被移到某元素之上(重要);
+      14.事件名:onmouseout;描述:鼠标从某元素移开(重要);
+      15.事件名:onmousemove;描述:鼠标被移动;
+
+  22、为什么script标签要放在body前，而不是head中？
+      按照传统的做法，所有script元素都应该放在页面的head元素中，这种做法的目的就是把所有外部文件（包括css和JavaScript文件）的引用都放在相同的地方，可是，在文档的head元素中包含所有JavaScript文件，意味着必须等到全部JavaScript代码都被下载、解析和执行完成之后，才能开始呈现页面内容（浏览器在遇到body标记时才开始呈现内容）。
+    对于那些需要很多JavaScript代码的页面来说，这无疑会导致浏览器在呈现页面时出现明显的延迟，而延迟期间的浏览器窗口中将是一片空白。为避免这个问题，现代web应用程序一般都把全部JavaScript引用放在<body>元素中页面内容的后面。
+    ——《JavaScript高级程序设计(第3版)》 12页
+
+  23、script标签放在head标签与body标签中的区别
+    html代码是从上往下依次执行,<script>放在<head>中时，会在页面加载之前加载到浏览器里，放在<body>中时，会在页面加载完成之后读取。
+
+javascript---对象
+一、Object类型
+  概述:
+    到目前为止，我们使用的引用类型最多的可能就是Object 类型了。虽然Object 的实例不具备多少功能，但对于在应用程序中的存储和传输数据而言，它确实是非常理想的选择。
+    创建Object 类型有两种。一种是使用new 运算符，一种是字面量表示法。
+  1-1.使用new运算符创建object
+    var box=new Object();//new 方式
+    box.name="lisi";//创建属性字段
+    box.age=28;//创建属性字段
+
+  1-2.new 关键字可以省略
+    var box=Object();//省略了new关键字
+
+  1-3.使用字面量方式创建Object
+    var box={//字面量方式
+    name:"lisi",//创建属性字段
+    age:28;
+
+    };
+  1-4.属性字段也可以使用字符串创建
+    var box = {
+            'name' : '李四', //也可以用字符串形式
+            'age' : 28
+    }
+  1-5.使用字面量及传统复制方式
+    var box = {}; //字面量方式声明空的对象
+    box.name = '李四'; //点符号给属性复制
+    box.age = 28;
+  1-6.两种属性输出方式
+    alert(box.age); //点表示法输出
+    alert(box['age']); //中括号表示法输出，注意引号
+    PS：在使用字面量声明Object 对象时，不会调用Object()构造函数(Firefox 除外)。
+  1-7.给对象创建方法
+    var box={
+      run:function(){
+        //对象中的方法
+        return "运行"
+      }
+    }
+
+    console.log(box.run())//调用属性中的方法
+  1-8.使用delete删除对象属性
+    delete box.name;//删除属性
+    在实际开发过程中，一般我们更加喜欢字面量的声明方式。因为它清晰，语法代码少，
+    而且还给人一种封装的感觉。字面量也是向函数传递大量可选参数的首选方式。
+  1-9.参数是一个对象
+    function box(obj) { //参数是一个对象
+          if (obj.name != undefined) alert(obj.name); //判断属性是否存在
+          if (obj.age != undefined) alert(obj.age);
+        }
+    box({ //调用函数传递一个对象
+        name : '李四',
+        age : 28
+    });
+
+二、js中的对象
+  js对象 
+  Array:数组对象,通过var arr=new Array()或var arr=[element,element...]方式创建数组
+  Boolean:布尔对象,可以认为是js中基本数据类型的boolean的包装类
+  Date:日期对象,跟java中没有什么本质区别,new Date()获得当前时间对象
+  Math:数学对象,与java中的Math相似,其内部的方法都是静态的,无需创建该对象直接调用即可
+  Number:数字对象,可以认为是js中基本数据类型number的包装类
+  String:字符串对象,可以认为是js中基本数据类型string的包装类
+  RegExp:正则对象,可以通过new RegExp()或直接用语法/^正则规则$/创建对象
+  Functions:函数对象,创建函数和js的内置函数都是一个函数对象
+  Events:事件对象,使用的事件都是该对象的体现
+
+  1、Array对象(very important)
+    Array对象是数组对象，跟java中的数组一个意思，但是使用语法上稍微有些区别。 
+    Java：可以保存多种类型相同的数据。在Java中数组的长度是固定的，类型也固定的。
+    js：可以保存不同类型的数据，同时长度不固定。可以把其理解成Java中的ArrayList。
+    1-2.创建数组对象的方式
+      1.创建空数组:var arr=new Array();
+      2.创建制定容量的数组:var arr=new Array(size);
+      3.创建数组并填充元素:var arr = new Array(a,b,c...);
+      4.创建元素数组:var arr = [a,b,c...];
+    1-3.数组中元素的获取
+      跟Java/python一样通过索引的方式获取数组中的元素,获得数组中的一个元素:arr[num]
+      demo1:
+      for(var i=0;i<arr.length;i++){
+        console.log(arr[i]);
+      }
+
+      demo2:
+      <script>
+        //定义一个数组并且初始化元素;
+        var arr = ['aaa',111,88.7,true];//类似于没有定义泛型的 ArrayList
+
+        //遍历数组
+        for (var i=0;i<arr.length;i++){
+          //获取元素
+          document.write(i+"="+arr[i]+"<br/>");
+        }
+
+        //越界赋值
+        arr[5]="wangwu";
+        document.write("arr.length = " + arr.length + " <br />");
+        for (var i = 0; i < arr.length; i++) {
+            // 获取元素
+            document.write(i + " = " + arr[i] + " <br />");
+        }
+
+      </script>
+
+      结果:
+      1=111
+      2=88.7
+      3=true
+      arr.length = 6 
+      0 = aaa 
+      1 = 111 
+      2 = 88.7 
+      3 = true 
+      4 = undefined 
+      5 = wangwu 
+
+  2、Date()、日期对象
+    2-1.创建对象
+      1.创建当前日期时间:var date=new Date();
+      2.创建指定日期时间:var date=new Date(毫秒值);
+      其中毫秒值为1970-01-01至今的时间毫秒值
+    2-2.时间获取
+      1.YEAR:getFullYear() 以四位数字返回年份
+      2.MONTH:getMonth() 返回月份(0~11)         有疑问?
+      3.日Date:getDate() 返回一个月中的某一天
+      4.Hour:getHours() 返回小时(0~23)
+      5.Minutes:getMinutes() 返回分钟(0~59)
+      6.Seconds:getSeconds() 返回秒数(0~59)
+      7.毫秒值:getTime() 返回 1970 年 1 月 1 日至今的毫秒数
+      8.toLocaleString() 把Date对象转换为字符串
+      9.toLocaleDateString() 把Date对象的日期部分转换为字符串
+      10.toLocaleTimeString()	 把Date对象的时间部分转换为字符串
+      11.星期:getDay() 返回一周中的某一天(0~6),0代表周日
+      demo--->get time 
+      <script>
+        //定义一个Date日期对象
+        document.write("<br>");
+        var date = new Date();
+        document.write("当前日期对象 : "+date+"<br>");
+        document.write("日期字符串 : "+date.toLocaleString()+"<br>");
+        document.write("当前年月日 : "+date.toLocaleDateString()+"<br>");
+        document.write("当前时分秒 : "+date.toLocaleTimeString()+"<br>");
+        document.write("年 : "+date.getFullYear()+"<br>");
+        document.write("月 : "+(date.getMonth()+1)+"<br>");//注意月份需要加1
+        document.write("日 : "+date.getDate()+"<br>");
+        document.write("时 : "+date.getHours()+"<br>");
+        document.write("分 : "+date.getMinutes()+"<br>");
+        document.write("秒 : "+date.getSeconds()+"<br>");
+        document.write("星期 : "+date.getDay()+"<br>");
+      </script>
+
+      返回结果 
+      当前日期对象 : Sat Oct 10 2020 14:05:51 GMT+0800 (中国标准时间)
+      日期字符串 : 2020/10/10 下午2:05:51
+      当前年月日 : 2020/10/10
+      当前时分秒 : 下午2:05:51
+      年 : 2020
+      月 : 10
+      日 : 10
+      时 : 14
+      分 : 5
+      秒 : 51
+      星期 : 6
+  3、Math对象
+    3-1.概述
+      Math对象是数学对象,是一个工具对象,因此Math对象不用使用new的方式创建,直接使用Math就可以调用对象内部的方法
+      Math.random()返回0.0~1.0之间的随机double小数
+      demo1
+      <script>
+        for ( var i = 0 ; i < 20; i++){
+          //Math 数学类:random();返回一个0.0~1.0之间的小数,不包含1.0.
+          var value=Math.random();
+          //value = value *10;0.78--->7.8
+          //将该数值转换为一个整型 window.parseInt();
+          // value * n, 取值范围为 [0~9], 如果n是一个数组的长度, 根据长度计算出来的下标, 会不会越界呢 ? 不会.
+          var index = window.parseInt(value * 10);
+          document.write(i + " = " + index + " <br />");
+        }
+      
+      </script>
+      结果:
+      0 = 0 
+      1 = 5 
+      2 = 7 
+      3 = 8 
+      4 = 9 
+      5 = 7 
+      6 = 1 
+      7 = 8 
+      8 = 6 
+      9 = 2 
+      10 = 7 
+      11 = 6 
+      12 = 2 
+      13 = 4 
+      14 = 6 
+      15 = 4 
+      16 = 4 
+      17 = 1 
+      18 = 2 
+      19 = 0 
+      demo2--->Random_roll_call
+
+      Random_roll_call.html
+
+三、全局函数:window
+  1.转换函数
+    1-1.parseInt()
+        作用:将一个字符串转成整数,如果一个字符串包含非数字字符,那么parseInt函数会从首字母开始取数字字符,一旦发现非数字字符,马上停止获取内容
+    1-2.parseFloat()
+        作用:将一个字符串转换成小数,转换原理同parseInt()
+    1-3.isNaN()
+        作用:转换前判断被转换的字符串是否是一个数字,非数字返回true
+    全局函数:
+      parseInt(num);//取整,不会四舍五入
+      Math.round(num);//取整,会四舍五入
+    demo--->transform function 
+    <script>
+      //transform function
+      //parseInt
+      var num1 = window.parseInt("111");
+      document.write(typeof num1 + "=" + num1 + "<br/>");
+
+      var num2 = window.parseInt("7.8");
+      document.write(typeof num2 + "=" + num2 + "<br/>");
+
+      var num3 = window.parseInt("222aaa333");
+      document.write(typeof num3 + "=" + num3 + "<br/>");
+
+      var num4 = window.parseInt(2222);
+      document.write(typeof num4 + "=" + num4 + "<br/>");
+
+      //parseFloat
+      var num5= window.parseFloat('7.8');
+      document.write(typeof num5 +"="+num5 +"<br/>");
+
+      //Math.round();
+      var num6= Math.round('7.8');
+      document.write(typeof num6 +"="+num6+"<br/>");
+      
+
+      var num7= Math.round('7.2');
+      document.write(typeof num7 +"="+num7+"<br/>");
+      
+      // isNaN
+      var r1 = window.isNaN(100);
+      document.write(typeof r1 + " = " + r1 + "<br />");
+  
+      var r2 = window.isNaN("100");
+      document.write(typeof r2 + " = " + r2 + "<br />");
+  
+      var r3 = window.isNaN("abc");
+      document.write(typeof r3 + " = " + r3 + "<br />");
+    </script>
+
+  2.编码解码函数
+    2-1.函数名称:encodeURI(URIString); 作用:可把字符串作为URI进行编码
+    2-2.函数名称:decodeURI(URIString); 作用:可对encodeURI()函数编译过的URI进行解码
+    //encodeURI decodeURI
+    var urlStr="https://www.baidu.com?wd=编码解码函数";
+
+    document.write('初始URL : '+urlStr+"<br/>");
+    //encodeURI  编码字符串(资源路径)
+    urlStr=encodeURI(urlStr);
+    document.write('编码URL : '+urlStr+"<br/>");
+
+    //decodeURI  解码字符串(资源路径)
+    urlStr=decodeURI(urlStr);
+    document.write('解码URL : '+urlStr+"<br/>");
+
+    结果:
+    初始URL : https://www.baidu.com?wd=编码解码函数
+    编码URL : https://www.baidu.com?wd=%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81%E5%87%BD%E6%95%B0
+    解码URL : https://www.baidu.com?wd=编码解码函数
+
+四、BOM
+  1.概述
+    BOM(Browser Object Mode)
+    browser [ˈbraʊzə(r)]  浏览器
+    浏览器对象模型,是将我们使用的浏览器抽象成对象模型,例如打开一个浏览器,可以呈现出页面,通过js提供浏览器对象模型
+    例如，在浏览器地址栏输入地址，敲击回车这个过程，我们可以使用location对象进行模拟。在例如，浏览器中的前进和后退按钮，我们可以使用history对象模拟。
+    history历史地址对象.1:forword 前进;2:back后退;3:go(数值);
+    BOM的顶层对象就是window对象,window对象的弹框功能:1.alert():警告框;2.confirm():确认框;3.promp();提示框
+    location地址对象;网址定位:href超链接
+  
+  2.BOM对象:
+    2-1.Screen对象：里面存放着有关显示浏览器屏幕的信息。
+    2-2.Window对象：表示一个浏览器窗口或一个框架.
+    2-3.Navigator对象：包含的属性描述了正在使用的浏览器。
+    2-4.History对象：保存浏览器历史记录信息。
+    2-5.Location对象：Window对象的一个部分，可通过window.location属性来访问。
+  3.window对象（重要）
+    3-1.概述
+      BOM 的核心对象是window，它表示浏览器的一个实例。window 对象处于JavaScript 结构的最顶层，对于每个打开的窗口，系统都会自动为其定义window 对象
+    3-2.结构
+      window 
+      ├─ document
+      │    ├─ anchors
+      │    ├─ forms
+      │    ├─ images
+      │    ├─ links
+      │    └─ location
+      ├─ frames
+      ├─ history
+      ├─ location
+      ├─ Navigator对象：包含的属性描述了正在使用的浏览器。
+      └─ Screen
+
+    3-3.对象的属性和方法
+      属性:
+        1.document:窗口当前显示的文档对象
+        2.frames:窗口中的框架对象数组
+        3.history:保存有窗口最近加载的URL
+        4.length:窗口中的框架数
+        5.location:当前窗口的URL
+      方法:
+        1.alert(text) 功能:创建一个警告对话框,显示一条信息
+        2.blur() 将焦点从窗口移除
+        3.close() 关闭窗口
+        4.confirm() 创建一个需要用户确认的对话框
+        5.focus() 将焦点移至窗口
+      A、与对话框相关的方法
+        1.alert("提示信息");作用:弹出一个确认按钮的信息框
+        2.string prompt("提示信息","默认值");作用:弹出一个信息框返回字符串类型
+        3.boolean confirm("提示信息");作用:弹出一个信息框,有确定和取消按钮.<br/>如果点确定返回true,点取消返回false
+      B、与计时有关的方法
+        1.setTimeout(函数名, 间隔毫秒数);
+          作用:在指定的时间后调用1次函数，只执行1次，单位是毫秒。
+          返回值：返回一个整数类型的计时器函数调用有两种写法：1.setTimeout("函数名(参数)", 1000);2.setTimeout(函数名,1000, 参数); 注意方式二：没有引号，没有括号
+        2.setInterval(函数名, 间隔毫秒数)
+          每过指定的时间调用1次函数，不停的调用函数，单位是毫秒。返回值：返回一个整数类型的计时器。
+        3.clearInterval(计时器)
+          清除setInterval()方法创建的计时器
+        4.clearTimeout(计时器)
+          清除setTimeout创建的计时器
+      C、修改元素内容的几个方法和属性
+        1.方法：document.getElementById("id"); 作用:通过id得到一个元素，如果有同名的元素则得到第1个
+        2.属性：innerHTML; 作用:获得：元素内部的HTML设置：修改元素内部的HTML
+        3.属性: innerText; 作用:获得：元素内部的文本设置：修改元素内部的纯文本，其中的html标签不起作用
+    3-4.警告框alert()
+      警告框经常用于确保用户可以得到某些信息。
+      <script>
+        alert("Hello World!");
+      </script>
+    3-5.  确认框 confirm()
+      确认框用于使用户可以验证或者接受某些信息。
+      当确认框出现后，用户需要点击确定或者取消按钮才能继续进行操作。
+
+      <script>
+        var result = window.confirm("亲爱的,你真的决定要离开我吗?");
+        window.alert("result = " + result);
+      </script>
+    3-6. 提示框 prompt()
+      提示框经常用于提示用户在进入页面前输入某个值。
+      当提示框出现后，用户需要输入某个值，然后点击确认或取消按钮才能继续操纵。
+      如果用户点击确认，那么返回值为输入的值。如果用户点击取消，那么返回值为 null。
+      <script>
+        var result = window.prompt("请输入您的姓名");
+        window.alert("result = " + result);
+      </script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

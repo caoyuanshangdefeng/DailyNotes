@@ -1,0 +1,271 @@
+连接成功
+Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-66-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+Welcome to Alibaba Cloud Elastic Compute Service !
+
+Last login: Sun Sep 20 14:58:39 2020 from 111.19.92.117
+root@root:~# sudo apt-get  update
+Hit:1 http://mirrors.cloud.aliyuncs.com/ubuntu bionic InRelease
+Hit:2 http://mirrors.cloud.aliyuncs.com/ubuntu bionic-updates InRelease
+Hit:3 http://mirrors.cloud.aliyuncs.com/ubuntu bionic-security InRelease
+Reading package lists... Done                                    
+root@root:~# sodu apt-get install mysql-server
+sodu: command not found
+root@root:~# apt-get install mysql-server
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libopts25 sntp
+Use 'apt autoremove' to remove them.
+The following additional packages will be installed:
+  libcgi-fast-perl libcgi-pm-perl libencode-locale-perl
+  libevent-core-2.1-6 libfcgi-perl libhtml-parser-perl
+  libhtml-tagset-perl libhtml-template-perl libhttp-date-perl
+  libhttp-message-perl libio-html-perl liblwp-mediatypes-perl
+  liburi-perl mysql-client-5.7 mysql-client-core-5.7
+  mysql-server-5.7 mysql-server-core-5.7
+Suggested packages:
+  libdata-dump-perl libipc-sharedcache-perl libwww-perl tinyca
+The following NEW packages will be installed:
+  libcgi-fast-perl libcgi-pm-perl libencode-locale-perl
+  libevent-core-2.1-6 libfcgi-perl libhtml-parser-perl
+  libhtml-tagset-perl libhtml-template-perl libhttp-date-perl
+  libhttp-message-perl libio-html-perl liblwp-mediatypes-perl
+  liburi-perl mysql-client-5.7 mysql-client-core-5.7
+  mysql-server mysql-server-5.7 mysql-server-core-5.7
+0 upgraded, 18 newly installed, 0 to remove and 4 not upgraded.
+Need to get 19.7 MB of archives.
+After this operation, 156 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://mirrors.cloud.aliyuncs.com/ubuntu bionic-updates/main amd64 mysql-client-core-5.7 amd64 5.7.31-0ubuntu0.18.04.1 [6,653 kB]
+Get:2 http://mirrors.cloud.aliyuncs.com/ubuntu bionic-updates/main amd64 mysql-client-5.7 amd64 5.7.31-0ubuntu0.18.04.1 [1,948 kB]
+Get:3 http://mirrors.cloud.aliyuncs.com/ubuntu bionic-updates/main amd64 mysql-server-core-5.7 amd64 5.7.31-0ubuntu0.18.04.1 [7,452 kB]
+Get:4 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 libevent-core-2.1-6 amd64 2.1.8-stable-4build1 [85.9 kB]
+Get:5 http://mirrors.cloud.aliyuncs.com/ubuntu bionic-updates/main amd64 mysql-server-5.7 amd64 5.7.31-0ubuntu0.18.04.1 [2,931 kB]
+Get:6 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 libhtml-tagset-perl all 3.20-3 [12.1 kB]
+Get:7 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 liburi-perl all 1.73-1 [77.2 kB]
+Get:8 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 libhtml-parser-perl amd64 3.72-3build1 [85.9 kB]
+Get:9 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 libcgi-pm-perl all 4.38-1 [185 kB]
+Get:10 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 libfcgi-perl amd64 0.78-2build1 [32.8 kB]
+Get:11 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 libcgi-fast-perl all 1:2.13-1 [9,940 B]
+Get:12 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 libencode-locale-perl all 1.05-1 [12.3 kB]
+Get:13 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 libhtml-template-perl all 2.97-1 [59.0 kB]
+Get:14 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 libhttp-date-perl all 6.02-1 [10.4 kB]
+Get:15 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 libio-html-perl all 1.001-1 [14.9 kB]
+Get:16 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 liblwp-mediatypes-perl all 6.02-1 [21.7 kB]
+Get:17 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 libhttp-message-perl all 6.14-1 [72.1 kB]
+Get:18 http://mirrors.cloud.aliyuncs.com/ubuntu bionic-updates/main amd64 mysql-server all 5.7.31-0ubuntu0.18.04.1 [9,948 B]
+Fetched 19.7 MB in 2s (10.8 MB/s)   
+Preconfiguring packages ...
+Selecting previously unselected package mysql-client-core-5.7.
+(Reading database ... 109060 files and directories currently installed.)
+Preparing to unpack .../00-mysql-client-core-5.7_5.7.31-0ubuntu0.18.04.1_amd64.deb ...
+Unpacking mysql-client-core-5.7 (5.7.31-0ubuntu0.18.04.1) ...
+Selecting previously unselected package mysql-client-5.7.
+Preparing to unpack .../01-mysql-client-5.7_5.7.31-0ubuntu0.18.04.1_amd64.deb ...
+Unpacking mysql-client-5.7 (5.7.31-0ubuntu0.18.04.1) ...
+Selecting previously unselected package mysql-server-core-5.7.
+Preparing to unpack .../02-mysql-server-core-5.7_5.7.31-0ubuntu0.18.04.1_amd64.deb ...
+Unpacking mysql-server-core-5.7 (5.7.31-0ubuntu0.18.04.1) ...
+Selecting previously unselected package libevent-core-2.1-6:amd64.
+Preparing to unpack .../03-libevent-core-2.1-6_2.1.8-stable-4build1_amd64.deb ...
+Unpacking libevent-core-2.1-6:amd64 (2.1.8-stable-4build1) ...
+Selecting previously unselected package mysql-server-5.7.
+Preparing to unpack .../04-mysql-server-5.7_5.7.31-0ubuntu0.18.04.1_amd64.deb ...
+Unpacking mysql-server-5.7 (5.7.31-0ubuntu0.18.04.1) ...
+Selecting previously unselected package libhtml-tagset-perl.
+Preparing to unpack .../05-libhtml-tagset-perl_3.20-3_all.deb ...
+Unpacking libhtml-tagset-perl (3.20-3) ...
+Selecting previously unselected package liburi-perl.
+Preparing to unpack .../06-liburi-perl_1.73-1_all.deb ...
+Unpacking liburi-perl (1.73-1) ...
+Selecting previously unselected package libhtml-parser-perl.
+Preparing to unpack .../07-libhtml-parser-perl_3.72-3build1_amd64.deb ...
+Unpacking libhtml-parser-perl (3.72-3build1) ...
+Selecting previously unselected package libcgi-pm-perl.
+Preparing to unpack .../08-libcgi-pm-perl_4.38-1_all.deb ...
+Unpacking libcgi-pm-perl (4.38-1) ...
+Selecting previously unselected package libfcgi-perl.
+Preparing to unpack .../09-libfcgi-perl_0.78-2build1_amd64.deb ...
+Unpacking libfcgi-perl (0.78-2build1) ...
+Selecting previously unselected package libcgi-fast-perl.
+Preparing to unpack .../10-libcgi-fast-perl_1%3a2.13-1_all.deb ...
+Unpacking libcgi-fast-perl (1:2.13-1) ...
+Selecting previously unselected package libencode-locale-perl.
+Preparing to unpack .../11-libencode-locale-perl_1.05-1_all.deb ...
+Unpacking libencode-locale-perl (1.05-1) ...
+Selecting previously unselected package libhtml-template-perl.
+Preparing to unpack .../12-libhtml-template-perl_2.97-1_all.deb ...
+Unpacking libhtml-template-perl (2.97-1) ...
+Selecting previously unselected package libhttp-date-perl.
+Preparing to unpack .../13-libhttp-date-perl_6.02-1_all.deb ...
+Unpacking libhttp-date-perl (6.02-1) ...
+Selecting previously unselected package libio-html-perl.
+Preparing to unpack .../14-libio-html-perl_1.001-1_all.deb ...
+Unpacking libio-html-perl (1.001-1) ...
+Selecting previously unselected package liblwp-mediatypes-perl.
+Preparing to unpack .../15-liblwp-mediatypes-perl_6.02-1_all.deb ...
+Unpacking liblwp-mediatypes-perl (6.02-1) ...
+Selecting previously unselected package libhttp-message-perl.
+Preparing to unpack .../16-libhttp-message-perl_6.14-1_all.deb ...
+Unpacking libhttp-message-perl (6.14-1) ...
+Selecting previously unselected package mysql-server.
+Preparing to unpack .../17-mysql-server_5.7.31-0ubuntu0.18.04.1_all.deb ...
+Unpacking mysql-server (5.7.31-0ubuntu0.18.04.1) ...
+Setting up libhtml-tagset-perl (3.20-3) ...
+Setting up libhttp-date-perl (6.02-1) ...
+Setting up libevent-core-2.1-6:amd64 (2.1.8-stable-4build1) ...
+Setting up libencode-locale-perl (1.05-1) ...
+Setting up mysql-server-core-5.7 (5.7.31-0ubuntu0.18.04.1) ...
+Setting up libio-html-perl (1.001-1) ...
+Setting up liblwp-mediatypes-perl (6.02-1) ...
+Setting up liburi-perl (1.73-1) ...
+Setting up libhtml-parser-perl (3.72-3build1) ...
+Setting up libcgi-pm-perl (4.38-1) ...
+Setting up libhttp-message-perl (6.14-1) ...
+Setting up mysql-client-core-5.7 (5.7.31-0ubuntu0.18.04.1) ...
+Setting up libfcgi-perl (0.78-2build1) ...
+Setting up libhtml-template-perl (2.97-1) ...
+Setting up libcgi-fast-perl (1:2.13-1) ...
+Setting up mysql-client-5.7 (5.7.31-0ubuntu0.18.04.1) ...
+Setting up mysql-server-5.7 (5.7.31-0ubuntu0.18.04.1) ...
+update-alternatives: using /etc/mysql/mysql.cnf to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Renaming removed key_buffer and myisam-recover options (if present)
+Created symlink /etc/systemd/system/multi-user.target.wants/mysql.service → /lib/systemd/system/mysql.service.
+Setting up mysql-server (5.7.31-0ubuntu0.18.04.1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1.2) ...
+Processing triggers for systemd (237-3ubuntu10.42) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Processing triggers for ureadahead (0.100.0-21) ...
+root@root:~# apt-get install mysql-client
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libopts25 sntp
+Use 'apt autoremove' to remove them.
+The following NEW packages will be installed:
+  mysql-client
+0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.
+Need to get 9,824 B of archives.
+After this operation, 111 kB of additional disk space will be used.
+Get:1 http://mirrors.cloud.aliyuncs.com/ubuntu bionic-updates/main amd64 mysql-client all 5.7.31-0ubuntu0.18.04.1 [9,824 B]
+Fetched 9,824 B in 0s (137 kB/s)  
+Selecting previously unselected package mysql-client.
+(Reading database ... 109517 files and directories currently installed.)
+Preparing to unpack .../mysql-client_5.7.31-0ubuntu0.18.04.1_all.deb ...
+Unpacking mysql-client (5.7.31-0ubuntu0.18.04.1) ...
+Setting up mysql-client (5.7.31-0ubuntu0.18.04.1) ...
+root@root:~# apt-get install libmysqlclient-dev
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libopts25 sntp
+Use 'apt autoremove' to remove them.
+The following additional packages will be installed:
+  libssl-dev zlib1g-dev
+Suggested packages:
+  libssl-doc
+The following NEW packages will be installed:
+  libmysqlclient-dev libssl-dev zlib1g-dev
+0 upgraded, 3 newly installed, 0 to remove and 4 not upgraded.
+Need to get 2,733 kB of archives.
+After this operation, 14.3 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://mirrors.cloud.aliyuncs.com/ubuntu bionic-updates/main amd64 libssl-dev amd64 1.1.1-1ubuntu2.1~18.04.6 [1,566 kB]
+Get:2 http://mirrors.cloud.aliyuncs.com/ubuntu bionic/main amd64 zlib1g-dev amd64 1:1.2.11.dfsg-0ubuntu2 [176 kB]
+Get:3 http://mirrors.cloud.aliyuncs.com/ubuntu bionic-updates/main amd64 libmysqlclient-dev amd64 5.7.31-0ubuntu0.18.04.1 [992 kB]
+Fetched 2,733 kB in 0s (10.4 MB/s)      
+Selecting previously unselected package libssl-dev:amd64.
+(Reading database ... 109521 files and directories currently installed.)
+Preparing to unpack .../libssl-dev_1.1.1-1ubuntu2.1~18.04.6_amd64.deb ...
+Unpacking libssl-dev:amd64 (1.1.1-1ubuntu2.1~18.04.6) ...
+Selecting previously unselected package zlib1g-dev:amd64.
+Preparing to unpack .../zlib1g-dev_1%3a1.2.11.dfsg-0ubuntu2_amd64.deb ...
+Unpacking zlib1g-dev:amd64 (1:1.2.11.dfsg-0ubuntu2) ...
+Selecting previously unselected package libmysqlclient-dev.
+Preparing to unpack .../libmysqlclient-dev_5.7.31-0ubuntu0.18.04.1_amd64.deb ...
+Unpacking libmysqlclient-dev (5.7.31-0ubuntu0.18.04.1) ...
+Setting up libssl-dev:amd64 (1.1.1-1ubuntu2.1~18.04.6) ...
+Setting up zlib1g-dev:amd64 (1:1.2.11.dfsg-0ubuntu2) ...
+Setting up libmysqlclient-dev (5.7.31-0ubuntu0.18.04.1) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+root@root:~# sudo netstat -tap | grep mysql
+tcp        0      0 localhost:mysql         0.0.0.0:*               LISTEN      1416/mysqld         
+root@root:~# /etc/init.d/mysql restart
+[ ok ] Restarting mysql (via systemctl): mysql.service.
+
+三个命令执行完,中间有要你输入y的时候,并没有提示安装,输入密码等界面.
+
+mysql5.7版本就自动给生成用户及密码,我们需要用以下密码打开配置文件:
+/etc/mysql/debian.cnf
+sudo vi /etc/mysql/debian.cnf
+user     = debian-sys-maint
+password = EOxryhlKdRAfk1hj
+
+用上面的用户名和密码连接到MySQL
+登录Mysql：“输入mysql -uroot -p -P3306 -h127.0.0.1”
+表示超级用户名root,密码稍后输入，端口号3306（不输入P默认为3306），
+主机地址127.0.0.1（若使用本机作为主机，h默认127.0.0.1）
+
+mysql -udebian-sys-maint -pEOxryhlKdRAfk1hj
+
+1045问题
+mysql授权用户
+use mysql;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '这里写自己数据库的密码' WITH GRANT OPTION;
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'zz820915@' WITH GRANT OPTION;
+
+
+
+
+以上上报1251问题
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'zz820915@';
+mysql退出三种方法：
+mysql > exit;
+mysql > quit;
+mysql > \q;
+
+
+
+
+启动mysql：
+方式一：sudo /etc/init.d/mysql start 
+方式二：sudo service mysql start
+
+停止mysql：
+方式一：sudo /etc/init.d/mysql stop 
+方式二：sudo service mysql stop
+
+重启mysql：
+方式一：sudo/etc/init.d/mysql restart
+方式二：sudo service mysql restart
+
+
+
+
+
+
+
+
+需要授权一个用户
+
+
+
+
+
+
+
+
+

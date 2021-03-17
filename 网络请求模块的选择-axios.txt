@@ -1,0 +1,296 @@
+
+一、网络请求模块的选择-axios
+	Vue中发送网络请求有非常多的方式,如何进行选择
+	1.选择一:
+		传统的Ajax是基于XMLHttpRequest(XHR)
+		不选用它的理由:
+		a.配置和调用方式等非常混乱;
+		b.编码起来看起来非常复杂;
+		c.真实开发时很少使用,而是使用jQuery-Ajax.
+	2.选择二:
+		使用jQuery-Ajax,相对传统的Ajax比较好用,
+		不选用它的理由:
+		a.在整个Vue的开发中是不使用jQuery的,所以引用jQuery时不合理的
+		b.jQuery的代码量比Vue多
+		
+	3.选择三:
+		官方在Vue1.x时,推出Vue-resource
+		a.Vue-resource的体积相对于jQuery小很多,
+		b.另外Vue-resource是官方的.
+		不选用它的理由:
+		a.在Vue2.0退出后,Vue在Github的Issues中说明去掉了vue-resource,并且不再进行更新
+		b.vue-resource不再进行更新与维护对项目开发与维护是最大的隐患.
+	4.选择四:
+		使用axios
+二、jsonp
+	JSONP(JSON with Padding)是JSON的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题。
+	JSONP的原理
+	1.JSONP的核心在于通过<script>标签的src来请求数据;
+	2.原因:项目部署在domain1.com服务器上时,是不能直接访问domain2.com服务器上的资料的;domain[dəˈmeɪn; dəʊˈmeɪn]n. 领域；域名；产业；地产;
+	3.利用<script>标签的src帮助去服务器请求到数据,将数据当做一个js的函数来执行,并且执行的过程中传入需要的json;
+	4.封装jsonp的核心在于监听window上的jsonp进行回调时的名称.
+三、AXIOS的功能特点
+	一.功能特点
+	a.在浏览器中发送XMLHttpRequests请求
+	b.在node.js发送http请求
+	c.支持promise API
+	d.拦截请求与相应
+	e.转换请求和响应数据
+	f.axios名称的由来:ajax I/O system
+	二.axiox请求方式
+	支持多种请求方式
+	1.axios(config)
+	2.axios.request(config)
+	3.axios.get(url[,config])
+	4.axios.delete(url[,config])
+	5.axios.head(url[,config])
+	6.axios.post(url[,data[,config]])
+	7.axios.put(url[,data[,config]])
+	8.axios.patch(url[,data[,config]])
+	
+四、AXIOS的使用
+	一.main.js文件
+	import axios from 'axios'
+	axios({
+	url:'http://httpbin.org/'
+	})
+	
+	
+	二.发送get请求演示
+	举个栗子
+	import axios from 'axios'
+	
+	export default{
+		name:'app',
+		create(){
+			//提问:为什么没有跨域问题?
+			//1.没有请求参数
+			axios.get('http://123.207.32.32:8000/category')
+			.then(res=>{
+			console.log(res);}
+			)
+			.catch(err=>{
+			console.log(err);}
+			)
+			
+			//2.有请求参数
+			axios.get('http://123.207.32.32:8000/home/data',
+			{params:{type:'sell',page:1}})
+			.then(res=>{
+			console.log(res);}
+			)
+			.catch(err=>{
+			console.log(err);}
+			)
+		}
+	}
+五、AXIOS发送并发请求
+	使用axios.all,可以放入多个请求的数组
+	axios.all([])返回的结果是一个数组,使用axios.spread可将数组[res1,res2]展开为res1,res2;
+	举个栗子
+	import axios from 'axios'
+	
+	export default {
+	name : 'app',
+	create(){
+	//发送并发请求
+		axios.all([axios.get('http://123.207.32.32:8000/category'),
+				axios.get('http://123.207.32.32:8000/home/data',
+				{params:{type:'sell',page:1}})
+				])
+				.then(axios.spread((res1,res2)=>{
+				console.log(res1);
+				console.log(res2);
+				}
+			}
+		}
+
+六、axios的配置信息相关
+	1.请求地址
+	url:'/user'
+	2.请求类型
+	method:'get'
+	3.请求路径
+	baseURL:'http://www.mt.com/api'
+	4.请求前的数据处理
+	transformRequest:[function(data){}]
+	5.请求后的数据处理
+	transformResponse:[function(data){}]
+	6.自定义请求头
+	header:{'x-Requested-with':'XMLHttpRequest'},
+	7.URL查询对象
+	params:{id:12},
+	8.查询对象序列化函数
+	paramsSerializer:function(params){}
+	9.request body
+	data:{key:'aa'}
+	10.超时设置ms:
+	timeout:1000,
+	11.跨域是否带token
+	withCredentials:false  credentials[krəˈdenʃlz][管理] 证书；文凭；信任状
+	12.自定义请求处理
+	adapter:function(resolve,reject,config){}
+	adapter[ə'dæptə] n. 适配器；改编者；接合器；适应者
+	resolve[rɪˈzɒlv]vt. 决定；溶解；使……分解；决心要做……；[主化]解析
+	reject[rɪˈdʒekt]vt. 拒绝；排斥；抵制；丢弃
+	13.身份验证信息
+	auth:{uname:'',pwd:'12'}
+	14.响应的数据格式
+	json/blob/document/arraybuffer/text/stream
+	responseType:'json',
+
+七、axios的实例
+	Why create an AXIOS instance?
+	1.从axios模块中导入对象时,使用的实例是默认的实例
+	2.当给实例设置一些默认配置时,这些配置就被固定下来了
+	3.后续开发时,某些配置可能不一样,则需要重新配置
+	4.比如某些请求需要使用特定的baseURL或者timeout或者content-type等
+	5.可以创建新的实例,并传入属于该实例的配置信息
+八、Create axios instance
+	multidata多数据
+	for example 1
+		const instance1=axios.create({
+		baseURL:'http://123.207.32.32:8000',
+		timeout:5000})
+		
+		instance1({
+		url:'/home/multidata'})
+		.then(res=>{
+		console.log(res)
+		})
+		
+		instance1({
+		url:'/home/data',
+		params:{
+		type:'pop',
+		page:1}
+		})
+		.then(res=>{
+		console.log(res)
+		})
+	for example 2
+	request.js_file===>axios package
+	
+	export function request(config){
+		return new Promise((resolve,reject)=>{
+		//1.Create axios instance
+		const instance=axios.create({
+		baseURL:'http://123.207.32.32:8000',
+		timeout:5000})
+		
+		//actual[ˈæktʃuəl]adj. 真实的，实际的；现行的，目前的
+		//Send the actual network request
+		instance(config)
+		.then(res=>{resolve(res)})
+		.catch(err=>{reject(err)})
+		
+		})
+	}
+	
+	
+九、axios uses interceptor
+	interceptor[ˌɪntəˈseptə(r)]n. 拦截机；妨碍者；截击机；拦截者，拦截器
+	axios提供了拦截器,用于在发送每次请求或者得到响应后,进行对应的处理
+	How to use axios interceptor?
+	配置请求和响应拦截
+	//1.请求拦截的作用
+	instance.intercepter.request.use(config=>{
+	console.log('来到了request拦截的success中');
+	//1.比如config中的一些信息不符合服务器的要求
+	//2.比如每次发送一个网络请求时,都希望在界面中显示一个请求的图标
+	//3.某些网络请求,(比如登录的token),必须携带一些特殊的信息
+	
+	return config
+	},
+	err=>{
+	console.log('来到了request拦截的failure中');
+	return err
+	})
+	
+	
+	
+	instance.intercepter.response.use(response=>{
+	console.log('来到了response拦截的success中');
+	return response.data
+	),
+	err=>{
+	console.log('来到了response拦截的failure中');
+	return err
+	})
+
+
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

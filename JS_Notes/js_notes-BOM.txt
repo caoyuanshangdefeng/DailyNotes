@@ -1,0 +1,160 @@
+3-8.清除定时器clearTimeout();clearInterval();
+  默认开启的定时器是匿名的,开发者无法获取到它的内存位置;所以必须定义一个全局变量,用来存储定时器,再调用相应的方法
+  使用方法:
+  1.clearTimeout(变量名);//停止单次...
+  2.clearInterval(变量名);//停止循环...
+  <script>
+    window.onload=function(){
+      //单次定时器
+      //1.获取按钮
+      var btn1=document.getElementByID("btn1");
+      //定义定时器变量
+      //timer [电子] 定时器
+      var timer1;
+      var timer2;
+      //2.绑定单机事件
+      btn1.onclick=function(){
+        //3.定义一个单次定时器
+        timer1=window.setTimeout(function(){
+          console.log("单次定时器生效");
+        },1000)
+      }
+
+      //循环定时器
+
+      var btn2=document.getElementByID("btn2");
+      btn2.onclick=function(){
+        timer2=window.setInterval(function(){
+
+          console.log("循环定时器开始");
+        },5000)
+      }
+
+      //清除单次定时器
+      var btn3=document.getElementByID("btn3");
+      btn3.onclick=function(){
+        window.clearTimeout(timer1);
+      }
+
+
+
+      //清除循环定时器
+      var btn4=window.getElementByID("btn4");
+      btn4.onclick=function(){
+        window.clearInterval(timer2);
+      }
+    }
+  </script>
+
+  <body>
+    <button id="btn1">单次定时器</button>
+    <button id="btn2">循环定时器</button>
+    <button id="btn3">清除单词定时器</button>
+    <button id="btn4">清除定时器</button>
+  </body>
+
+  定时器积累Bug的解决:
+    在JS中,如果一次性开启了N个定时器,则会产生定时器积累的Bug;解决这一bug方法很简单,只需要在每次开启新的定时器钱,将旧的定时器做一次清空即可
+    见timer_bug.html
+四、History对象
+  1.概述:
+    HTML DOM History对象
+    History对象:实际是JS对象,不是HTML DOM对象
+    History对象是由javaScript runtime engine自动创建的,由一系列的URL组成.这些URL是用户在一个浏览器窗口内已访问的URL.
+    History对象最初设计来表示窗口的浏览历史,但是出于隐私方面的原因,History对象不再允许脚本访问已经访问过的URL.唯一保持使用的功能只有back()、forword()、go()方法
+    History对象是window对象的一部分,可通过window.history属性对其进行访问
+
+    方法1:back(); 描述:加载history列表中的前一个URL;
+    方法2:forword(); 描述:加载history列表中的下一个URL;
+    方法3:go(); 描述:加载history列表中某个具体页面
+  2.demo--->HTML DOM History
+    //HTML5 是 HyperText Markup Language 5 的缩写
+    <h1>A页面</h1>
+    <a href="b.html">B页面</a>
+    <input type="button" value="前进" onclick="window.history.forword()">
+
+    <h1>B页面</h1>
+    <a href="c.html">C页面</a>
+    <input type="button" value="后退" onclick="window.history.back()">
+
+    <h1>c页面</h1>
+    <input type="button" value="回到a页面" onclick="window.history.go(-2)">
+
+
+
+
+五、Location对象
+  1.概述:
+    HTML DOM Location对象    
+    Location对象:实际是JS对象,不是HTML DOM对象
+    Location对象是由javaScript runtime engine自动创建的,包含有关当前URL的信息
+    举例:把用户带到一个新的地址
+    Location对象是window对象的一个部分,可通过window.location属性来访问
+  2.demo1--->倒计时跳转到另一个页面
+    <script>
+      //页面加载完成事件
+      window.onload=function(){
+
+        //1.获取标签get Label
+        var time=document.getElementByID("time");
+
+        var count=5;
+
+        //2.循环定时器
+        window.setInterval(function(){
+          count--;
+          //3.判断
+          if(count>0){
+            time.innerHTML=count;}
+          else{
+            window.location.href= "http://www.baidu.com";
+          }
+          },2000);
+      }
+    </script>
+
+  3.demo2--->定时广告
+    
+    <img src="../img/top_banner.jpg" width="100%" id="img" style="display: none;"/>
+    //注意:图片直接设置单次定时器,无需绑定事件
+
+
+    <script>
+      window.onload=function(){
+        //需求:获取img标签,修改display属性,(none 不显示/block 显示)
+        //1.获取img标签
+        var img=document.getElementByID("img");
+        //2.单次定时器 
+        window.setTimeout(function(){
+          //3.修改img的display属性
+          img.style.display="block";
+          //4.嵌套一个单次定时器
+          window.setTimeout(function(){
+            img.style.display="none";
+
+          },2000);
+
+        },2000);
+
+      }
+    
+    
+    </script>
+
+  4.demo3--->表单验证
+    Form Validation表单验证 Validation[ˌvælɪˈdeɪʃn] n. 确认；批准；生效
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

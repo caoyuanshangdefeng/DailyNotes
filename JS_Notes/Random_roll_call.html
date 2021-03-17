@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random_roll_call</title>
+  <style>
+    body{
+      text-align: center;
+    }
+  </style>
+  <script type="text/javaScript">
+
+    //页面加载完成入口
+    window.onload=function () {
+      //1.获取标签(数组)
+      var inputs=document.getElementsByTagName("input");
+      var h1=document.getElementsByTagName("h1");
+
+      //2.提供一个数组,存储人名
+      var arr = ['张三','李四','王五','麻溜','郑鹏'];
+
+      //3.定义一个timer变量
+      var timer;
+
+      //4.给开始按钮绑定一个单机事件
+      inputs[0].onclick=function () {
+        //5.定时器的bug,开启定时器之前必须先关闭定时器
+        window.clearInterval(timer);
+
+        //6.循环定时器
+        timer=window.setInterval(
+          function(){
+
+            //7.生成一个下标
+            var index=window.parseInt(Math.random()*arr.length+"");
+
+            //8.根据下标取出名称,更换h1标签中的内容
+            h1[0].innerHTML=arr[index];
+          },30
+        );
+        //给"结束"按钮绑定单机事件
+        inputs[1].onclick=function(){
+          window.clearInterval(timer);
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <input type="button" value="开始"/>
+  <input type="button" value="结束"/>
+  <h1>等待抽奖</h1>
+</body>
+</html>
+
+
+
+
+
+

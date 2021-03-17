@@ -1,0 +1,163 @@
+django_restframework------ModelSerializer
+序列化器的作用：进行数据的校验,对数据对象进行转换
+
+serializer不是只能为数据库模型类定义，也可以为非数据库模型类的数据定义。
+
+序列化器：将查询的后端数据转换成JSON类型传递前端
+
+反序列化器：获取前端JSON数据，验证数据后保存或更新数据，得到新的数据对象，并保存到数据库中。
+
+
+django之on_delete
+
+  on_delete=None, # 删除关联表中的数据时,当前表与其关联的field的行为
+  on_delete=models.CASCADE, # 删除关联数据,与之关联也删除
+  on_delete=models.DO_NOTHING, # 删除关联数据,什么也不做
+  on_delete=models.PROTECT, # 删除关联数据,引发错误ProtectedError
+  # models.ForeignKey('关联表', on_delete=models.SET_NULL, blank=True, null=True)
+  on_delete=models.SET_NULL, # 删除关联数据,与之关联的值设置为null（前提FK字段需要设置为可空,一对一同理）
+  # models.ForeignKey('关联表', on_delete=models.SET_DEFAULT, default='默认值')
+  on_delete=models.SET_DEFAULT, # 删除关联数据,与之关联的值设置为默认值（前提FK字段需要设置默认值,一对一同理）
+  on_delete=models.SET, # 删除关联数据,
+  a. 与之关联的值设置为指定值,设置：models.SET(值)
+  b. 与之关联的值设置为可执行对象的返回值,设置：models.SET(可执行对象)
+
+模型类序列化器ModelSerializer
+DRF框架封装了序列化和反序列化，方便调用序列化器的类。
+ModelSerializer与常规的Serializer相同，但提供了：
+
+基于模型类自动生成一系列字段
+
+基于模型类自动为Serializer生成validators，比如unique_together
+
+包含默认的create()和update()的实现
+
+
+
+model.py
+
+from django.db import models
+# Create your models here.
+
+class UserGroup(models.Model):
+    title = models.CharField(max_length=32)
+
+class UserInfo(models.Model):
+
+    user_type_choices = (
+        (1, '普通用户'),
+        (2, 'VIP'),
+        (3, "SVIP"),
+    )
+
+    user_type = models.IntegerField(choices=user_type_choices)
+    username = models.CharField(max_length=32, unique=True)
+    password = models.CharField(max_length=32)
+
+    group=models.ForeignKey("UserGroup", on_delete=models.PROTECT)
+    roles=models.ManyToManyField("Role")
+
+class UserToken(models.Model):
+    user = models.OneToOneField(to="UserInfo", on_delete=models.PROTECT)
+    token = models.CharField(max_length=64)
+
+class Role(models.Model):
+    title = models.CharField(max_length=32)
+
+
+一、ModelSerializer序列化
+1、定义ModelSerializer序列化器
+# 针对models设计和声明序列化类
+from rest_framework import serializers
+from .models import UserGroup,UserInfo,UserToken,Role
+
+
+class UserInfoSerializer(serializers.ModelSerializer):
+  # 创建序列化器
+  class Meta:
+    # 定义元类
+    # model指明了当前的序列化器和哪个模型产生联系
+
+
+
+    model = UserInfo
+    # 这三种情况不能同时使用
+    # 1.取全部字段
+    fields = "__all__"
+
+    # 2.自定义包含字段
+    # fields = ["id", "username", "password"]
+    # 输出：[{"id": 1, "username": "xxx", "password": "xxx"},...]
+    #除了之前两中设置字段对应之外还有第三种:exclude设置为要从序列化程序中排除的字段列表。
+    #不需要写fields
+    #model = GoodsInfo
+    #exclude = ('is_delete',)  # 意思是除了这个字段都包含
+
+
+
+
+
+
+#指定字段序列化（即覆盖）
+
+class UserInfoSerializer(serializers.ModelSerializer):
+    user_type = serializers.CharField(source='get_user_type_display') #source='get_user_type_display'找到对应的中文
+    roles = serializers.CharField(source='roles.all')  # 外键关联因为是ALL返回的是对象
+    roles_info = serializers.SerializerMethodField()   # 表示自定义方法，显示外键关联详情
+    group_title = serializers.CharField(source='group.title')#自定义
+    # group_title = MyField(source='group.title')#自定义
+    def get_roles_info(self, row):
+        roles = row.roles.all()
+        ret = []
+        for item in roles:
+            ret.append(
+                {
+                    'id': item.id,
+                    'title': item.title
+                }
+            )
+        return ret
+
+    class Meta:
+        model = models.UserInfo
+        # fields = '__all__'  # 为全部的字段做匹配
+        fields = ['user_type', 'username', 'password', 'group', 'group_title', 'roles', 'roles_info']  # 自定义需要展示的字段
+        extra_kwargs = {'group': {'source': 'group_id'}}#group_id是字段名
+
+        #想要指定readonly字段还有第二个Meta选项，read_only_fields.:
+        #read_only_fields = ('roles',)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS样式的修改</title>
+  <style>
+    #box{
+      width: 200px;
+      height: 200px;
+      background-color: aqua;
+
+    }
+    .box2{
+      width: 400px;
+      height: 400px;
+      background-color:blue;
+    }
+  </style>
+</head>
+<body>
+  <div id = "box" >
+    <h1>box</h1>
+  </div>
+  <div class="box2">
+    <h1>box2</h1>
+  </div>
+
+  <script>
+    window.onload=function () {
+
+      // var box=document.getElementById("box");
+      // // 2. 设置 box 的属性值
+      // box.style.width = "100px";
+      // box.style.height = "100px";
+      // box.style.backgroundColor = "skyblue";
+
+
+      var box2=document.getElementsByClassName("box2");
+
+      box2.style.width = "300px";
+      box2.style.height = "300px";
+      box2.style.backgroundColor = "skyblue";
+
+    }
+  </script>
+</body>
+</html>

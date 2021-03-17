@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>轮播图</title>
+
+  <style>
+ 
+    .container {
+        width: 80%;
+        margin: 50px auto;
+    }
+
+    img {
+        width: 100%;
+    }
+
+</style>
+
+</head>
+
+
+
+<body>
+  <div class="container">
+    <img src="./carousel_img/01.jpg" alt="图片" id="img">
+</div>
+<script type="text/javascript">
+ 
+  // 需求 : 动态获取页面中的 img 标签, 然后修改 img 标签的 src 属性.
+  // 1. 获取 img 标签
+  var img = document.getElementById("img");
+  // alert(img);
+
+  // 定义一个变量
+  var count = 1;
+
+  // 1.2 定义一个函数
+  function changeImageSrc() {
+      count++;
+      img.src = "./carousel_img/0"+count+".jpg";
+
+      // 判断
+      if (count == 4) {
+          count = 0;
+      }
+  }
+
+  // 2. 循环切换图片
+  // window.setInterval(函数, 时间毫秒); 在指定的时间毫秒间隔, 不断调用第一个参数传入的函数.
+  // 调用方式一 :
+  // window.setInterval("changeImageSrc()", 1000);
+  // 调用方式二 :
+  window.setInterval(changeImageSrc, 3000);
+
+</script>
+</body>
+
+
+</html>
+
+
+

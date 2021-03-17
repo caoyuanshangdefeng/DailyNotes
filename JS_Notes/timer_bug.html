@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定时器的使用</title>
+  <script>
+    window.onload = function () {
+      //1.获取按钮和盒子
+      var btn1 = document.getElementById("btn");
+      var box1 = document.getElementById("box");
+      //2.定义一个定时器
+      var timer1;
+
+      //3.给按钮绑定单机事件
+      btn1.onclick = function () {
+        //解决定时器的bug,启动一个新的定时器之前,必须清除旧的定时器;
+        window.clearInterval(timer1);
+
+        var num = 0;
+        //4.定义一个循环定时器
+        timer1=window.setInterval(function(){
+          num+=10;
+          //5.不断更改盒子的外边距
+          box1.style.marginLeft=num+"px";
+        },50)
+
+      }
+
+    }
+
+
+  </script>
+</head>
+
+<body>
+  <!-- 
+    clearInterval(timer);
+    var timer=setInterval(....);
+
+   -->
+  <button id="btn">点击移动盒子</button>
+  <div id="box" style="width: 100px; height: 100px;  background-color: pink;">
+  </div>
+
+</body>
+
+</html>

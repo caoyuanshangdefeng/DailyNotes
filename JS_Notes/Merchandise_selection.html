@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品全选全不选反选</title>
+
+</head>
+<body>
+  <table id = "table" style ="border: 1 ;width :100% ; text-align: center;" >
+    <tr>
+      <td colspan="5" style=" text-align: left">
+        <input type="button" id="unCheckBtn" value="全不选">
+        <input type="button" id="reverseBtn" value="全选">
+      </td>
+    </tr>
+    <tr>
+      <th>全选<input id="all" type="checkbox" /></th>
+      <th>分类ID</th>
+      <th>分类名称</th>
+      <th>分类描述</th>
+      <th>操作</th>
+    </tr>
+    <tr>
+      <td><input type="checkbox" class="itemSelect" /></td>
+      <td>1</td>
+      <td>手机数码</td>
+      <td>手机数码类商品</td>
+      <td><a href="javascript:;">修改</a>|<a href="javascript:;">删除</a></td>
+    </tr>
+
+    <tr>
+      <td><input type="checkbox" class="itemSelect" /></td>
+      <td>2</td>
+      <td>电脑办公</td>
+      <td>电脑办公类用品</td>
+      <td><a href="javascript:;">修改</a>|<a href="javascript:;">删除</a></td>
+    </tr>
+
+    <tr>
+      <td><input type="checkbox" class="itemSelect" /></td>
+      <td>3</td>
+      <td>鞋靴箱包</td>
+      <td>鞋靴箱包类商品</td>
+      <td><a href="javascript:;">修改</a>|<a href="javascript:;">删除</a></td>
+    </tr>
+
+    <tr>
+      <td><input type="checkbox" class="itemSelect" /></td>
+      <td>4</td>
+      <td>家居饰品</td>
+      <td>电脑办公类用品</td>
+      <td><a href="javascript:;">修改</a>|<a href="javascript:;">删除</a></td>
+    </tr>
+
+    <tr>
+      <td><input type="checkbox" class="itemSelect" /></td>
+      <td>5</td>
+      <td>家居饰品类商品</td>
+      <td>水果蔬菜类商品</td>
+      <td><a href="javascript:;">修改</a>|<a href="javascript:;">删除</a></td>
+    </tr>
+  </table>
+
+  <script>
+    window.onload=function(){
+      //需求:全选
+      //1.1 获取全选按钮的选择框元素
+      var checkAll=document.getElementById("all");
+
+      //1.2获取所有的itemsSelect标签
+      var itemsSelects=document.getElementsByClassName("itemSelect");
+
+      //2.给全选按钮绑定一个单机事件
+      checkAll.onclick=function(){
+        //3.获取全选按钮的当前状态属性值
+        var checked=checkAll.checked;
+
+        //4.遍历itemSelects数组 
+        for (var i=0; i <itemsSelects.length;i++){
+          itemsSelects[i].checked=checked;
+
+        }
+
+      }
+
+
+       // 需求 : 全不选
+      var unCheckBtn = document.getElementById("unCheckBtn");
+      unCheckBtn.onclick = function () {
+          // for (var i = 0; i < itemsSelects.length; i++) {
+          //     itemsSelects[i].checked = false;
+          // }
+          checkAll.checked = false;
+      }
+
+
+      //鼠标移入变色,移出还原:onmouseover,onmouseout
+      // getElementsByTagName(tr标签)
+      //1.或许所有的tr标签
+      var trs=document.getElementsByTagName("tr");
+      //定义一个color属性
+      var color;
+      //2.遍历trs数组
+
+
+      for(var i=2;i<trs.length;i++){
+        //3.判断
+        if (i % 2 == 0) {
+              trs[i].style.backgroundColor = "yellow";
+          } else {
+              trs[i].style.backgroundColor = "skyblue";
+          }
+        //4.为每一个绑定一个"鼠标onmouseover"事件
+
+        trs[i].onmouseover=function(){
+          //记录当前行颜色
+          color=this.style.backgroundColor;
+          //当前行实现变色
+          this.style.backgroundColor="#ccc";
+        }
+
+
+        //5.为每一行绑定一个鼠标移出onmouseout事件
+        trs[i].onmouseout=function(){
+          this.style.backgroundColor=color
+        }
+      }
+
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+一、DOM
+  1.DOM 概述:
+    DOM对象：Document　Object  Model 文档对象模型、作用、通过DOM对象可以访问和操作html文件的每个标签、
+    html文档加载到浏览器的内存中后、我们认为形成了一颗DOM树、而任何一个html签、标签属性和文本都是这个树上的节点元素。
+    我们可以通过js的DOM组件中的方法对内存中的DOM树上的结构和内容进行修改，即通过js动态修改内存中的那一份html及css的代码。
+    当浏览器把一个html文件加载到内存中之后，这个html文件，就是一个Document对象。可以使用js技术结合Document对象，对html文件中的所有标签，进行各种操作。
+    在浏览器把html文件加载完成之后，标签被称作标签对象（元素节点），标签中的文件称为文本节点（文本对象），标签的属性称为属性节点（属性对象）。
+    nodeName、nodeValue及nodeType包含关于节点的信息
+    节点信息
+    每个节点都拥有包含关于节点某些信息的属性,这些属性是:
+    nodeName:(节点名称);
+    nodeValue(节点值);
+    nodeType(节点类型);
+
+    1.获取ID
+      document.getElementById("ID名"); 返回指定的ID对象
+
+      demo--->GET ID名
+      <input type="button" value="点击获取ID" id="btn" />
+
+      <script>
+        window.onload=function(){
+          //id编号
+          var btn = document.getElementById("btn")
+
+          btn.onclick=function(){
+            console.log("GET ID SUCCESS");
+          }
+        }
+      </script>
+    2.获取name值
+      document.getElementsByName("name名"); 返回制定的name值得对象集合
+      2-1.获取类名
+        document.getElementsByClassName("class名");返回指定class名的对象集合
+      2-2.获取标签名
+        document.getElementsByTagName("标签名"); 返回指定标签名的对象集合
+      2-3.获取标签内容
+        element.innerHTML; 获取标签内部的所有内容
+        element.innerText; 获取标签内部的文本内容
+    3.节点/元素的操作
+      3-1.判断是否有子节点
+        hasChildNodes(); 判断是否有子节点,返回true或false
+      3-2.删除节点
+        remove(); 删除当前标签对象,等同于自杀;
+        removeChild(childElement); 通过父标签对象删除子标签对象
+        parentElement 父标签对象
+      3-3.替换节点
+        replaceChild(newChild,oldChild);替换
+      3-4.创建元素
+        document.createElement("tagName"); 创建标签对象
+        需要与appendChild()或者insertBefore()方法联合使用
+
+        //创建节点
+        document.createElement("li");
+      3-5.新增子节点
+        appendChild(newChild);向父标签内部末尾处追加子节点
+        insertBefore(newChild,refChild);	向父标签下指定的子节点前添加标签对象. 注意:使用父标签调用该方法
+    4.标签属性的操作
+      4-1.获取属性
+        element.getAttribute("name")或者element.属性名:获得属性的值;
+      4-2.设置属性
+        element.setAttribute("name","value"):设置属性的值,以直接采用element.属性名通过单等号来赋值
+        //需求: 给input添加一个name属性   name="username"
+      4-3.删除属性
+        element.removeAttribute("name"); 删除某个属性
+        // 需求 : 删除 input 的 value 属性
+
+    5.css样式的修改
+      odj.style.样式名 获取值
+      obj.style.样式名=值         修改值       修改的值的格式必须跟css一模一样，也就是说有单位的必须加单位
+      修改（Modify）[ˈmɒdɪfaɪ]
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

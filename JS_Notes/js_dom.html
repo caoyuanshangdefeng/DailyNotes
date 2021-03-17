@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js_dom_demo</title>
+</head>
+
+<body>
+  <!-- GET ELEMENT ID -->
+  <!-- <input type="button" value="点击获取ID" id="btn" /> -->
+  <!-- <script>
+    window.onload=function(){
+      //id编号
+      var btn = document.getElementById("btn")
+
+      btn.onclick=function(){
+        console.log("GET ID SUCCESS");
+      }
+    }
+  </script> -->
+  <!-- GET ELEMENT NAME 
+  document.getElementsByName("name名")
+  -->
+  <!-- <input type="text"  name ="tname" value="王者1" /><br>
+  <input type="text"  name ="tname" value="王者2" /><br>
+  <input type="text"  name ="tname" value="王者3" /><br>
+  <input type="text"  name ="tname" value="王者4" /><br>
+
+  <input type="button" name="btnClick" value="保存" />
+
+  <script>
+    window.onload=function(){
+      //1.name=tname的标签
+      var inputs=document.getElementsByName("tname");
+      console.log(inputs,inputs.length);
+
+      //2.遍历
+      for (var i=0; i<inputs.length;i++ ){
+        //取出每个值
+        console.log(inputs[i].value);
+        //给input每个标签绑定一个onchange事件
+        inputs[i].onchange=function(){
+          //内容发生更改,需要查询当前元素this,更改后的内容
+          console.log(this);
+          console.log(this.value);
+        }
+      }
+    }
+  </script> -->
+
+  <!-- GET ELEMENT CLASS NAME 
+  document.getElementsByClassName("class名")
+  -->
+
+  <!-- <input type="text" name="tname" value="CLASS 名字-1" class="test" /> <br>
+  <input type="text" name="tname" value="CLASS 名字-2" class="test" /> <br>
+  <input type="button"  value="保存" class="test" />
+  <script>
+    window.onload=function(){
+      var inputs=document.getElementsByClassName("test");
+      console.log("inputsClass"+inputs);
+      console.log("inputsLength"+inputs.length);
+    }
+  </script> -->
+
+  <!-- GET ELEMENT Tag NAME 
+  document.getElementsByTagName("标签名")
+  -->
+  <!-- <select name="edu" id="edu">
+    <option value="博士">博士</option>
+    <option value="硕士">硕士</option>
+    <option value="本科">本科</option>
+    <option value="幼儿园">幼儿园</option>
+  </select>
+
+  <script>
+    window.onload=function(){
+      //tagName 标签名称
+      var options=document.getElementsByTagName("option");
+      console.log("options : "+options);
+
+      for (var i =0 ; i<options.length; i++){
+        console.log("optionCont : "+options[i].value);
+      }
+    }
+  </script> -->
+
+  <!-- 
+    GET ELEMENT Tag content
+    element.innerHTML
+    element.innerText; 
+   -->
+  <!-- <div id="box">
+     来不来
+     <h1>一起去</h1>
+   </div> -->
+
+  <!-- 
+    Determine if there are any child nodes
+    hasChildNodes(); 
+    This returns false if there are any child nodes and false if there are none
+  -->
+  <!-- <div id = "go">
+    来不来
+    <h1 id ="come">一起去</h1>
+
+  </div>
+  <div id="empty"></div>
+  <script>
+    window.onload = function () {
+ 
+    // hasChildNodes 是否包含子节点
+    // 1. go 标签
+    var go = document.getElementById("go");
+    console.log(go.hasChildNodes());       // true
+
+    // 2. come 标签
+    var come = document.getElementById("come");
+    console.log(come.hasChildNodes());
+           // true;最后一个子节点是text :一起去
+
+    // 3. empty 标签
+    var empty = document.getElementById("empty");
+    console.log(empty.hasChildNodes());
+       // false
+    }
+  </script> -->
+
+  <!-- 
+    Remove nodes
+    remove(); 删除当前标签对象,等同于自杀;
+    removeChild(childElement); 通过父标签对象删除子标签对象
+    parentElement 父标签对象
+   -->
+
+  <!-- 
+  <ul id="city">
+    <li id="bj">北京</li>
+    <li id="sh">上海</li>
+    <li id="gz">广州</li>
+    <li id="xa">西安</li>
+  </ul>
+  <script>
+    window.onload=function(){
+      //直接删除bj remove();
+      // var bj=document.getElementById("bj");
+      // bj.remove();
+
+      //通过city删除sh,parent调用removeChild 删除孩子
+      // var city=document.getElementById("city");
+      // var sh=document.getElementById("sh");
+      // city.removeChild(sh);
+
+
+      //通过父节点自己删除
+    //   var gz=document.getElementById("gz");
+    //   gz.parentElement.removeChild(gz);
+    // }
+  </script>
+   -->
+
+
+  <!-- 
+     Replace the node
+     replaceChild(newChild,oldChild); 替换父节点下的子节点. 注意: 需要使用父节点对象调用该方法
+
+    -->
+  <!-- you like the city : <br>
+  <ul id="city">
+    <li id="bj">Beijing</li>
+    <li id="tc">TongChuan</li>
+  </ul>
+
+  you like the game : <br>
+  <ul>
+    Counter-Strike 反恐精英 
+      World of Warcraft 魔兽
+      
+     
+    <li id="fk">Counter-Strike</li>
+    <li id="ms">World of Warcraft</li>
+  </ul>
+
+  <script>
+    // 需求:点击"beijing"节点,使用Counter-Strike节点实现替换
+    // replaceChild(newChild, oldChild);  注意: 该方法需要使用 `父节点` 实现调用.
+
+    //1.get label object
+    var city = document.getElementById("city");
+    var bj = document.getElementById("bj");
+    var fk = document.getElementById("fk");
+
+    //2.calling method
+
+    bj.onclick = function () {
+      city.replaceChild(fk, bj);
+    }
+
+  </script> -->
+
+
+
+  <!-- 
+    CREATE ELEMENT AND appendChild
+    document.createElement("tagName");         创建标签对象
+    appendChild(newChild);              向父标签内部末尾处追加子节点
+   -->
+
+   <ul id = "language">
+      <li id = "cl">C </li>
+      <li id = "cAdd">C++</li>
+      <li id = "ja">java</li>
+      <li id = "py">python</li>
+
+   </ul>
+
+   <script>
+     window.onload=function(){
+        //1.创建标签
+        var newLi=document.createElement("li");
+        //2.设置内容
+        newLi.innerHTML="php";
+        //3.拼接节点
+        var programmingLanguage = document.getElementById("language");
+        programmingLanguage.appendChild(newLi);
+
+
+        //4.在php之前添加javaScript
+        var newLi1=document.createElement("li");
+        newLi1.innerHTML="javaScript";
+
+        var ja=document.getElementById("ja");
+        programmingLanguage.insertBefore(newLi1,ja)
+
+
+     }
+
+
+   </script>
+
+
+
+
+
+</body>
+<!-- <script type="text/JavaScript">
+  window.onload=function (){
+
+    var box=document.getElementById("box");
+    //innerHTML
+    var boxHTMLCont=box.innerHTML
+    console.log(boxHTMLCont,boxHTMLCont.length,typeof boxHTMLCont);
+    //Return Content type string ; Contains the tag and text content of the div
+    // 来不来
+    //  <h1>一起去</h1>
+    // 31 string
+
+
+    //innerText
+    var boxTEXTCont=box.innerText
+    console.log(boxTEXTCont,boxTEXTCont.length,typeof boxTEXTCont);
+    //Return Content type string ; It's just text content
+    // 来不来
+    // 一起去 7 string
+  }
+
+</script> -->
+
+
+</html>
